@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mei's Chinese Kitchen</title>
+<meta name="description" content="Traditional Chinese home recipes and a simple guide to Chinese food therapy, from Mei Zhou's YouTube kitchen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap&text=%E6%A2%85%E5%AE%B6%E5%B8%B8%E5%9B%9B%E5%AD%A3%E5%AF%92%E5%87%89%E5%B9%B3%E6%B8%A9%E7%83%AD%E9%A3%9F%E7%96%97%E6%B1%A4%E8%92%B8">
+<link rel="canonical" href="https://kitchen.hellomeizhou.com/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#2E5B4C">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kitchen.hellomeizhou.com/">
+<meta property="og:title" content="Mei's Chinese Kitchen">
+<meta property="og:description" content="Traditional Chinese home recipes and a simple guide to Chinese food therapy, from Mei Zhou's YouTube kitchen.">
+<meta property="og:image" content="https://kitchen.hellomeizhou.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body style="margin:0">
+<style>
+/* Layout: a home recipe notebook. One reading column of "pages", the books shown as physical objects, a cinnabar seal for every buy action. */
+:root {
+  --paper: #EDF1EB;
+  --surface: #F9FBF7;
+  --page: #FFFEFA;
+  --ink: #1C2521;
+  --muted: #3F4B45;
+  --line: #C9D3CB;
+  --jade: #2E5B4C;
+  --jade-soft: #DCE8E1;
+  --cinnabar: #B5342A;
+  --cinnabar-deep: #8F241C;
+  --on-cinnabar: #FFFFFF;
+  --gold: #A8822F;
+  --highlight: #F6E7B8;
+  --cold: #3E7CA6;
+  --hot: #C2452F;
+  --cover-jade: #24483C;
+  --cover-ochre: #7E4A22;
+  --cover-ink: #F4EFE2;
+  --shadow: rgba(28, 37, 33, .16);
+  color-scheme: light;
+
+  --font-display: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-brush: "Ma Shan Zheng", "Kaiti SC", "STKaiti", "KaiTi", serif;
+
+  --step--1: 1.15rem;
+  --step-0: 1.3rem;
+  --step-1: 1.5rem;
+  --step-2: 1.9rem;
+  --step-3: clamp(2.1rem, 5vw, 3rem);
+  --step-4: clamp(2.5rem, 7vw, 4rem);
+}
+
+body { background: var(--paper); color: var(--ink); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--jade); }
+
+.mei { font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; color: var(--ink); background: var(--paper); padding-bottom: 88px; }
+.mei *, .mei *::before, .mei *::after { box-sizing: border-box; }
+.mei h1, .mei h2, .mei h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.12; text-wrap: balance; margin: 0; }
+.mei p { margin: 0; }
+.mei a { color: inherit; }
+.mei :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.narrow { max-width: 720px; }
+.section { padding-block: clamp(56px, 9vw, 96px); }
+.section + .section { border-top: 1px solid var(--line); }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font-size: 1.15rem; font-weight: 700; color: var(--jade); }
+.lede { color: var(--muted); font-size: var(--step-1); max-width: 60ch; }
+.section-head { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; max-width: 680px; }
+.section-head h2 { font-size: var(--step-3); }
+
+/* Draft notice */
+.draft { background: var(--highlight); color: var(--ink); font-size: var(--step--1); }
+.draft .wrap { padding-block: 10px; }
+
+/* Sale bar */
+.salebar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--jade); color: var(--paper); }
+.salebar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 16px; padding-block: 10px; font-size: 1.14rem; text-align: center; }
+.salebar strong { font-weight: 700; }
+.salebar .old { opacity: .75; }
+.salebar a { color: var(--paper); font-weight: 700; text-underline-offset: 3px; }
+.timer { display: inline-flex; gap: 4px; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.timer span { background: rgba(0,0,0,.22); padding: 1px 6px; border-radius: 4px; }
+.timer.light span { background: var(--jade-soft); color: var(--ink); }
+
+/* Header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--font-display); font-size: 1.38rem; }
+.seal { display: inline-grid; place-items: center; width: 40px; height: 40px; background: var(--cinnabar); color: var(--on-cinnabar); font-family: var(--font-brush); font-size: 1.6rem; line-height: 1; border-radius: 6px; transform: rotate(-4deg); flex: none; }
+.top nav { display: flex; gap: 20px; font-size: 1.14rem; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--ink); }
+@media (max-width: 720px) { .top nav .opt { display: none; } }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 12px 26px; border-radius: 10px; font-weight: 700; font-size: 1.3rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .15s ease, background-color .15s ease; text-align: center; }
+.btn-buy { background: var(--cinnabar); color: var(--on-cinnabar); box-shadow: 0 6px 0 var(--cinnabar-deep); }
+.btn-buy:hover { transform: translateY(-1px); }
+.btn-buy:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--cinnabar-deep); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-block { width: 100%; }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 6vw, 72px); align-items: center; padding-block: clamp(24px, 5vw, 56px) clamp(56px, 8vw, 88px); }
+.hero h1 { font-size: var(--step-4); }
+.hero h1 em { font-style: normal; color: var(--cinnabar); }
+.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.price-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.price-now { font-family: var(--font-display); font-size: 2.64rem; line-height: 1; }
+.price-was { color: var(--muted); text-decoration: line-through; font-size: 1.38rem; }
+.save { font-size: 1.1rem; font-weight: 700; background: var(--highlight); color: var(--ink); padding: 3px 8px; border-radius: 4px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.trust { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 1.1rem; color: var(--muted); padding: 0; margin: 0; list-style: none; }
+.trust li::before { content: "✓ "; color: var(--jade); font-weight: 700; }
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-art { order: -1; }
+}
+
+/* Book covers */
+.hero-art { position: relative; display: grid; place-items: center; min-height: 360px; }
+.cover { position: relative; width: min(230px, 44vw); max-width: 100%; aspect-ratio: 3 / 4.2; border-radius: 3px 10px 10px 3px; padding: 22px 20px 18px 28px; color: var(--cover-ink); display: flex; flex-direction: column; gap: 8px; box-shadow: 0 22px 40px -12px var(--shadow), inset 6px 0 0 rgba(0,0,0,.18), inset 8px 0 0 rgba(255,255,255,.06); overflow: hidden; }
+.cover.jade { background: var(--cover-jade); }
+.cover.ochre { background: var(--cover-ochre); }
+.cover .by { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+.cover .han { font-family: var(--font-brush); font-size: 4.2rem; line-height: 1; margin-top: 8px; }
+.cover .ttl { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.12; margin-top: auto; }
+.cover .sub { font-size: .78rem; opacity: .85; line-height: 1.35; }
+.cover .stamp { position: absolute; right: 14px; top: 18px; width: 30px; height: 30px; display: grid; place-items: center; background: var(--cinnabar); color: #fff; font-family: var(--font-brush); font-size: 1.15rem; border-radius: 4px; transform: rotate(6deg); }
+.cover.ochre .stamp { background: var(--cover-jade); }
+.cover-img { width: min(250px, 44vw); height: auto; border-radius: 2px 6px 6px 2px; box-shadow: 0 22px 40px -14px var(--shadow), 0 0 0 1px var(--line); }
+.hero-art .cover-img:nth-child(1) { transform: rotate(-7deg) translate(-26%, 4%); }
+.hero-art .cover-img:nth-child(2) { position: absolute; transform: rotate(5deg) translate(26%, -2%); }
+.hero-art .ribbon { position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%) rotate(-2deg); background: var(--surface); border: 1px solid var(--line); padding: 6px 14px; border-radius: 999px; font-size: 1.1rem; font-weight: 700; white-space: nowrap; z-index: 2; }
+
+/* As-seen strip */
+.seen { background: var(--surface); border-block: 1px solid var(--line); }
+.seen .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 28px; align-items: center; padding-block: 22px; }
+.seen ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.seen li a { display: inline-block; font-size: 1.1rem; padding: 6px 12px; border-radius: 999px; background: var(--jade-soft); text-decoration: none; }
+.seen li a:hover { text-decoration: underline; }
+@media (max-width: 720px) { .seen .wrap { grid-template-columns: 1fr; } }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 2px solid var(--ink); }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-size: 2.4rem; line-height: 1; color: var(--cinnabar); }
+.steps h3 { font-size: var(--step-1); }
+.steps p { color: var(--muted); }
+.steps-note { margin-top: 28px; color: var(--muted); }
+@media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+
+/* Math table */
+.math { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.table-scroll { overflow-x: auto; }
+.math th, .math td { padding: 14px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+.math thead th { font-size: 1.1rem; color: var(--muted); font-weight: 700; }
+.math td.num, .math th.num { text-align: right; white-space: nowrap; }
+.math td.take { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--cinnabar); }
+.math td.home { font-weight: 700; color: var(--jade); }
+.math tfoot td { font-weight: 700; border-bottom: 0; font-size: 1.32rem; }
+.math-note { margin-top: 16px; font-size: var(--step--1); color: var(--muted); }
+.callout { margin-top: 28px; padding: 20px 24px; background: var(--jade-soft); border-radius: 12px; font-size: var(--step-1); font-family: var(--font-display); }
+
+/* Look inside: recipe pages */
+.pages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 900px) { .pages { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+.pg { background: var(--page); border: 1px solid var(--line); border-radius: 4px; padding: 22px 20px 18px; box-shadow: 0 14px 30px -18px var(--shadow); display: flex; flex-direction: column; gap: 12px; min-width: 0; font-size: .9rem; }
+.pg-top { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.pg h3 { font-size: 1.35rem; }
+.pg .meta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; font-size: .82rem; }
+.pg .meta dt { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.pg .meta dd { margin: 0; }
+.pg ul { margin: 0; padding-left: 18px; }
+.pg .note { background: var(--jade-soft); padding: 10px 12px; border-radius: 6px; font-size: .84rem; }
+.pg .note b { font-family: var(--font-display); font-weight: 400; }
+.pg-foot { margin-top: auto; text-align: center; font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
+
+/* TCM thermal scale */
+.scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; }
+.scale span { display: grid; place-items: center; gap: 0; padding: 4px 0 3px; border-radius: 3px; font-size: .62rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); background: var(--jade-soft); line-height: 1.1; }
+.scale span b { font-family: var(--font-brush); font-weight: 400; font-size: 1.05rem; text-transform: none; letter-spacing: 0; }
+.scale span.on { color: #fff; }
+.scale span.on.c2 { background: var(--cold); }
+.scale span.on.c3 { background: var(--jade); }
+.scale span.on.c4 { background: var(--hot); }
+.chart-rows { display: flex; flex-direction: column; gap: 6px; }
+.chart-row { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 10px; align-items: baseline; font-size: .82rem; }
+.chart-row b { font-family: var(--font-mono); font-weight: 500; font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
+.chart-row .k1 { color: var(--cold); } .chart-row .k2 { color: var(--cold); } .chart-row .k3 { color: var(--jade); } .chart-row .k4 { color: var(--hot); } .chart-row .k5 { color: var(--hot); }
+.thermo { height: 8px; border-radius: 99px; background: linear-gradient(90deg, var(--cold), var(--jade) 50%, var(--hot)); }
+
+/* Books */
+.books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: start; }
+@media (max-width: 960px) { .books { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; } }
+.book { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.book.best { border: 2px solid var(--cinnabar); background: var(--page); position: relative; }
+.book.best .flag { position: absolute; top: -14px; left: 24px; background: var(--cinnabar); color: var(--on-cinnabar); font-size: 1.1rem; font-weight: 700; padding: 4px 12px; border-radius: 4px; }
+.book h3 { font-size: var(--step-2); }
+.book .specs { font-size: 1.1rem; color: var(--muted); }
+.book ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 1.16rem; }
+.book li { padding-left: 24px; position: relative; }
+.book li::before { content: "✓"; position: absolute; left: 0; color: var(--jade); font-weight: 700; }
+.book li.bonus::before { content: "+"; color: var(--cinnabar); }
+.book .price-line { margin-top: 4px; }
+.book .fine { font-size: 1.1rem; color: var(--muted); text-align: center; }
+.chapters { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+@media (max-width: 760px) { .chapters { grid-template-columns: 1fr; } }
+.chapters h3 { font-size: var(--step-1); margin-bottom: 12px; }
+.chapters ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.chapters li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 1.16rem; }
+.chapters li span:last-child { font-size: 1.1rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Reviews */
+.rating { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 1.2rem; }
+.reviews { columns: 3 280px; column-gap: 20px; }
+.review { break-inside: avoid; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 10px; }
+.review .stars { font-size: 1.2rem; }
+.review p { font-size: 1.18rem; }
+.review footer { font-size: 1.1rem; color: var(--muted); }
+.review footer b { color: var(--ink); font-weight: 600; }
+
+/* Free chapter */
+.free { background: var(--jade); color: var(--paper); }
+.free .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px 48px; align-items: center; }
+.free h2 { font-size: var(--step-3); }
+.free p { opacity: .9; }
+.free .btn-ghost { color: var(--paper); border-color: var(--paper); }
+@media (max-width: 760px) { .free .wrap { grid-template-columns: 1fr; } }
+
+/* About */
+.about { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 36px; align-items: start; }
+.about img { width: 240px; max-width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 12px; box-shadow: 0 14px 34px -16px var(--shadow); }
+.about .stack p { max-width: 62ch; }
+.signature { font-family: var(--font-display); font-size: 1.68rem; color: var(--jade); }
+@media (max-width: 640px) { .about { grid-template-columns: 1fr; } .about img { width: 100%; max-width: 320px; } }
+
+/* Guarantee */
+.guarantee { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 28px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(24px, 4vw, 40px); }
+.guarantee .big-seal { width: 140px; height: 140px; border-radius: 12px; background: var(--cinnabar); color: var(--on-cinnabar); display: grid; place-items: center; text-align: center; font-family: var(--font-display); line-height: 1; transform: rotate(-5deg); }
+.guarantee .big-seal b { display: block; font-size: 2.6rem; font-weight: 400; }
+.guarantee .big-seal small { display: block; font-family: var(--font-body); font-size: 1rem; font-weight: 700; line-height: 1.15; margin-top: 4px; }
+.guarantee h2 { font-size: var(--step-2); margin-bottom: 8px; }
+@media (max-width: 600px) { .guarantee { grid-template-columns: 1fr; } }
+
+/* FAQ */
+.faq { border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; padding: 18px 36px 18px 0; position: relative; font-weight: 600; font-size: 1.3rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font-family: var(--font-display); font-size: 1.6rem; color: var(--cinnabar); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding: 0 0 20px; color: var(--muted); max-width: 64ch; }
+
+/* Final CTA */
+.final { text-align: center; }
+.final .stack { align-items: center; }
+.final h2 { font-size: var(--step-4); }
+
+/* Footer */
+.foot { border-top: 1px solid var(--line); font-size: 1.1rem; color: var(--muted); }
+.foot .wrap { padding-block: 32px; display: flex; flex-direction: column; gap: 10px; }
+.foot .links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+
+/* Sticky buy bar */
+.buybar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--page); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -12px var(--shadow); padding-bottom: env(safe-area-inset-bottom, 0px); transform: translateY(110%); transition: transform .25s ease; }
+.buybar.show { transform: none; }
+.buybar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.buybar .info { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.buybar .info b { font-family: var(--font-display); font-weight: 400; font-size: 1.26rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.buybar .info small { color: var(--muted); font-size: 1.1rem; }
+.buybar .btn { min-height: 46px; padding: 8px 18px; font-size: 1.2rem; flex: none; }
+@media (max-width: 420px) { .buybar .info .hide-xs { display: none; } }
+
+/* Exit popup */
+.modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(10, 16, 13, .6); }
+.modal-card { position: relative; max-width: 440px; width: 100%; background: var(--page); color: var(--ink); border-radius: 16px; padding: 32px 28px 24px; display: flex; flex-direction: column; gap: 14px; text-align: center; align-items: center; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); }
+.modal-card h2 { font-size: var(--step-2); }
+.modal-covers { display: flex; justify-content: center; align-items: flex-end; margin: 4px 0 6px; }
+.modal-covers img { width: 128px; aspect-ratio: 480 / 686; height: auto; border-radius: 2px 4px 4px 2px; box-shadow: 0 16px 28px -14px var(--shadow), 0 0 0 1px var(--line); }
+.modal-covers img:first-child { transform: rotate(-6deg) translateX(14px); }
+.modal-covers img:last-child { transform: rotate(5deg) translateX(-14px) translateY(-6px); position: relative; }
+@media (max-width: 420px) { .modal-covers img { width: 104px; } }
+.modal-card .close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; background: transparent; color: var(--muted); font-size: 1.6rem; cursor: pointer; border-radius: 8px; }
+.modal-card .nothanks { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; font: inherit; font-size: 1.1rem; padding: 8px; }
+
+/* Mei hello badge */
+.mei-hello { display: flex; align-items: center; gap: 14px; }
+.mei-hello img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 3px solid var(--surface); box-shadow: 0 6px 18px -8px var(--shadow); flex: none; }
+.mei-hello p { font-size: 1.14rem; color: var(--muted); line-height: 1.4; }
+.mei-hello p b { display: block; color: var(--ink); font-family: var(--font-display); font-weight: 400; font-size: 1.32rem; }
+
+/* Kitchen photo band */
+.kitchen-band { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 16px; }
+.kitchen-band figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.kitchen-band img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 10px; display: block; background: var(--jade-soft); }
+.kitchen-band figure:first-child img { aspect-ratio: auto; height: 100%; min-height: 0; }
+.kitchen-band figcaption { font-size: 1.1rem; color: var(--muted); }
+.kitchen-band figcaption b { color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) {
+  .kitchen-band { grid-template-columns: 1fr 1fr; }
+  .kitchen-band figure:first-child { grid-column: 1 / -1; }
+  .kitchen-band figure:first-child img { aspect-ratio: 4 / 3; height: auto; }
+}
+
+/* Sample viewer */
+.inside-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+@media (max-width: 900px) { .inside-grid { grid-template-columns: 1fr; } }
+.viewer { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.viewer-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.viewer-tabs button { font: inherit; font-size: 1.1rem; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.viewer-tabs button[aria-selected="true"] { background: var(--jade); border-color: var(--jade); color: var(--paper); }
+.viewer-stage { position: relative; display: grid; place-items: center; background: var(--jade-soft); border-radius: 10px; padding: 16px 48px; min-height: 420px; touch-action: pan-y; }
+.viewer-stage canvas { display: block; max-width: 100%; height: auto; box-shadow: 0 14px 34px -14px var(--shadow); border-radius: 2px; background: #F2EBD9; }
+.viewer-status { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 1.14rem; }
+.viewer-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--page); color: var(--ink); font-size: 1.3rem; line-height: 1; cursor: pointer; display: grid; place-items: center; }
+.viewer-nav:disabled { opacity: .35; cursor: default; }
+.viewer-nav.prev { left: 6px; }
+.viewer-nav.next { right: 6px; }
+.viewer-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; font-size: 1.1rem; color: var(--muted); }
+.viewer-bar input[type="range"] { flex: 1; min-width: 120px; accent-color: var(--cinnabar); }
+.viewer-bar a { color: var(--ink); font-weight: 600; text-underline-offset: 3px; }
+.viewer-bar .count { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.inside-notes { display: flex; flex-direction: column; gap: 18px; }
+.inside-notes ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.inside-notes li { padding-left: 26px; position: relative; }
+.inside-notes li::before { content: "✓"; position: absolute; left: 0; color: var(--jade); font-weight: 700; }
+@media (max-width: 520px) { .viewer-stage { padding: 12px 8px 56px; min-height: 360px; } .viewer-nav { top: auto; bottom: 8px; transform: none; } .viewer-nav.prev { left: calc(50% - 48px); } .viewer-nav.next { right: calc(50% - 48px); } }
+
+/* Final CTA photo */
+.final-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; border: 4px solid var(--surface); box-shadow: 0 10px 28px -12px var(--shadow); }
+
+/* Sale-ended state */
+.mei.ended .sale-only { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mei *, .mei *::before, .mei *::after { transition: none !important; animation: none !important; }
+}
+</style>
+
+<div class="mei" id="mei">
+
+  <div class="draft" id="draft-notice" hidden>
+    <div class="wrap"><strong>Draft preview.</strong> Replace the sample reviews, payment links, chapter lists and sale end date in the CONFIG block before going live. Set <code>draft: false</code> to hide this bar.</div>
+  </div>
+
+  <div class="salebar" id="salebar">
+    <div class="wrap">
+      <span class="sale-only"><strong data-promo-label>Launch sale</strong>: <span data-promo-why>the books are new, and so is this price.</span> Both books <strong data-price="bundle">$39</strong> <span class="old">(<s data-ref="bundle">$39</s>)</span>, ends in</span>
+      <span class="timer sale-only" data-countdown aria-label="Time left in the launch sale"><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span>
+      <span class="ended-only" hidden><strong data-term-label>霜降 Frost’s Descent</strong>: <span data-term-why>the first frost, and the first warming stews.</span> Both books <strong data-price="bundle">$39</strong> <span class="old">(<s data-ref="bundle">$48</s> bought separately)</span></span>
+      <a href="#books">See the offer</a>
+    </div>
+  </div>
+
+  <header class="wrap top">
+    <a class="brand" href="#mei"><span class="seal" aria-hidden="true">梅</span>Mei's Kitchen</a>
+    <nav aria-label="Page sections">
+      <a class="opt" href="#inside">Look inside</a>
+      <a class="opt" href="#reviews">Reviews</a>
+      <a class="opt" href="#faq">Questions</a>
+      <a href="#books"><strong>Get the books</strong></a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="mei-hello"><img data-asset src="mei-portrait.jpg" alt="Mei Zhou" width="64" height="64"><p><b>Hi, I’m Mei.</b>From my YouTube kitchen to yours · 1st edition, 2026</p></div>
+        <h1>Light, warming Chinese meals that <em>keep you well.</em></h1>
+        <p class="lede">51 traditional home recipes, 24 seasonal soups and teas, and a plain-English guide to Chinese food therapy. The same tricks you see in my videos, written down step by step, with ingredients from an ordinary grocery store.</p>
+        <div class="price-line">
+          <span class="price-now" data-price="bundle">$39</span>
+          <span class="price-was" data-ref="bundle">$48</span>
+          <span class="save" data-save-text="bundle">Save 19% vs. separately</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-buy" data-buy="bundle" href="#books">Get both books</a>
+          <a class="btn btn-ghost" href="#inside">See pages inside</a>
+        </div>
+        <ul class="trust">
+          <li>Instant download, PDF + EPUB</li>
+          <li><span data-guarantee-days>30</span>-day money back</li>
+          <li>Secure checkout</li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <img class="cover-img" data-asset src="cover-kitchen.jpg" alt="" width="480" height="686">
+        <img class="cover-img" data-asset src="cover-seasons.jpg" alt="" width="480" height="686">
+        <span class="ribbon">PDF + EPUB · 2 books</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="seen">
+    <div class="wrap">
+      <span class="eyebrow">In the books, from my videos</span>
+      <ul>
+        <li><a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">The garlic trick for juicy shrimp</a></li>
+        <li><a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">The ginger trick for tender fish</a></li>
+        <li><a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">Lighter kung pao chicken</a></li>
+        <li><a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">Crispy, healthier potstickers</a></li>
+        <li><a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">15-minute wonton soup</a></li>
+        <li><a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">Chicken corn soup</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>You pay once, and the books are on your screen a minute later.</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Choose your books</h3><p>Pay with card, Apple Pay or Google Pay on a secure checkout page. I never see your card number.</p></li>
+        <li><h3>Open your books</h3><p>The download link appears right away and lands in your email. Each book comes as a PDF and an EPUB, for any phone, tablet, computer or e-reader.</p></li>
+        <li><h3>Cook tonight</h3><p>Print the pages you love, or keep the tablet on the counter. The link stays in your inbox for good.</p></li>
+      </ol>
+      <p class="steps-note">Nothing ships, there is no account to create, and there is no subscription.</p>
+    </div>
+  </section>
+
+  <section class="section" id="kitchen">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">From my kitchen</span>
+        <h2>The same kitchen you see in my videos, now on paper.</h2>
+      </div>
+      <div class="kitchen-band">
+        <figure><img data-asset src="mei-wok.jpg" alt="Mei tossing bok choy in a wok" loading="lazy"><figcaption><b>Half the oil.</b> A hot pan and a single spoonful is all a stir-fry needs.</figcaption></figure>
+        <figure><img data-asset src="mei-dumplings.jpg" alt="Mei folding dumplings at her kitchen table" loading="lazy"><figcaption><b>Sunday dumplings.</b> One hour of folding, a month of quick dinners.</figcaption></figure>
+        <figure><img data-asset src="mei-market.jpg" alt="Mei choosing ginger at an Asian grocery" loading="lazy"><figcaption><b>Ordinary groceries.</b> Everything tested with what any supermarket sells.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="math">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <span class="eyebrow">The takeout math</span>
+        <h2>What a Chinese dinner costs, ordered in or cooked at home.</h2>
+      </div>
+      <div class="table-scroll">
+        <table class="math">
+          <thead><tr><th>Dish</th><th class="num">Takeout</th><th class="num">Mei's way</th></tr></thead>
+          <tbody>
+            <tr><td>Kung pao chicken, 2 servings</td><td class="num take">$18.50</td><td class="num home">$4.20</td></tr>
+            <tr><td>Wonton soup, 2 bowls</td><td class="num take">$12.00</td><td class="num home">$2.60</td></tr>
+            <tr><td>Potstickers, 12 pieces</td><td class="num take">$11.00</td><td class="num home">$2.40</td></tr>
+            <tr><td>Garlic green beans</td><td class="num take">$9.50</td><td class="num home">$1.30</td></tr>
+          </tbody>
+          <tfoot><tr><td>One dinner for two</td><td class="num take">$51.00</td><td class="num home">$10.50</td></tr></tfoot>
+        </table>
+      </div>
+      <p class="math-note">Typical US takeout menu prices and supermarket ingredient costs, before tax, tip and delivery fees.</p>
+      <p class="callout">Skip one takeout night and the bundle has paid for itself. You also know exactly how much oil, salt and sugar went in.</p>
+    </div>
+  </section>
+
+  <section class="section" id="inside">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Look inside</span>
+        <h2>Leaf through real pages before you buy.</h2>
+        <p class="lede">These are actual pages from both books: covers, contents, a chapter opener, recipes with their photographs, the food-nature tables and the body-type questionnaire.</p>
+      </div>
+      <div class="inside-grid">
+        <div class="viewer" id="viewer">
+          <div class="viewer-tabs" role="tablist" aria-label="Choose a sample">
+            <button type="button" role="tab" id="tab-kitchen" data-sample="kitchen" aria-selected="true">Home Kitchen · 11 pages</button>
+            <button type="button" role="tab" id="tab-seasons" data-sample="seasons" aria-selected="false">Eat for the Season · 10 pages</button>
+          </div>
+          <div class="viewer-stage" id="viewer-stage" tabindex="0" aria-label="Sample pages. Use the arrow keys to turn pages.">
+            <canvas id="viewer-canvas" width="560" height="800" aria-hidden="true"></canvas>
+            <div class="viewer-status" id="viewer-status">Opening the sample…</div>
+            <button type="button" class="viewer-nav prev" id="viewer-prev" aria-label="Previous page">‹</button>
+            <button type="button" class="viewer-nav next" id="viewer-next" aria-label="Next page">›</button>
+          </div>
+          <div class="viewer-bar">
+            <span class="count">Page <b id="viewer-num">1</b> of <b id="viewer-total">11</b></span>
+            <input type="range" id="viewer-range" min="1" max="11" value="1" aria-label="Go to page">          </div>
+        </div>
+        <div class="inside-notes">
+          <ul>
+            <li>Every recipe has its own page, with a full-page photograph facing it.</li>
+            <li>Ingredients in US cups and ounces, with grams alongside.</li>
+            <li>Each dish marked warm, cool or neutral, the traditional Chinese way.</li>
+            <li>Hand-drawn botanical plates from the 1820s open every chapter.</li>
+            <li>Print the pages you love. The PDF is made for it.</li>
+          </ul>
+          <div class="price-line"><span class="price-now" data-price="bundle">$39</span><span class="price-was" data-ref="bundle">$48</span><span class="save">Both books</span></div>
+          <a class="btn btn-buy" data-buy="bundle" href="#books">Get both books</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="books">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Choose your copy</span>
+        <h2>Two books that work together: one for the stove, one for the season.</h2>
+        <p class="lede sale-only"><span data-promo-label>Launch sale</span> prices end in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></p>
+      </div>
+      <div class="books">
+        <article class="book">
+          <h3>Mei's Chinese Home Kitchen</h3>
+          <span class="specs">51 recipes · 9 chapters · 121 pages · PDF + EPUB</span>
+          <ul>
+            <li>Soups, steamed dishes, stir-fries, dumplings, congee</li>
+            <li>The tricks from my videos, with 30 full-page photographs</li>
+            <li>Less oil, salt and sugar than takeout</li>
+            <li>US cups and ounces next to grams</li>
+          </ul>
+          <div class="price-line"><span class="price-now" data-price="kitchen">$29</span><span class="price-was sale-only" data-ref="kitchen">$29</span></div>
+          <a class="btn btn-ghost btn-block" data-buy="kitchen" href="#books">Get the cookbook</a>
+        </article>
+        <article class="book best">
+          <span class="flag">Most chosen</span>
+          <h3>The Complete Bundle</h3>
+          <span class="specs">Both books + 2 printables · PDF + EPUB</span>
+          <ul>
+            <li>Mei's Chinese Home Kitchen (51 recipes)</li>
+            <li>Eat for the Season (TCM food guide)</li>
+            <li class="bonus">Bonus: warming and cooling foods fridge chart</li>
+            <li class="bonus">Bonus: Chinese pantry shopping list, by aisle</li>
+          </ul>
+          <div class="price-line"><span class="price-now" data-price="bundle">$39</span><span class="price-was" data-ref="bundle">$48</span><span class="save" data-save-text="bundle">Save 19% vs. separately</span></div>
+          <a class="btn btn-buy btn-block" data-buy="bundle" href="#books">Get the bundle</a>
+          <p class="fine">One payment. <span data-guarantee-days>30</span>-day money back. You keep the books.</p>
+        </article>
+        <article class="book">
+          <h3>Eat for the Season</h3>
+          <span class="specs">TCM guide · 24 soups &amp; teas · 95 pages · PDF + EPUB</span>
+          <ul>
+            <li>Warming and cooling foods, explained simply</li>
+            <li>A 5-minute quiz to find your body type</li>
+            <li>Menus for spring, summer, autumn and winter</li>
+            <li>24 soups and teas, season by season</li>
+          </ul>
+          <div class="price-line"><span class="price-now" data-price="seasons">$19</span><span class="price-was sale-only" data-ref="seasons">$19</span></div>
+          <a class="btn btn-ghost btn-block" data-buy="seasons" href="#books">Get the guide</a>
+        </article>
+      </div>
+
+      <div class="chapters">
+        <div>
+          <h3>Inside the cookbook</h3>
+          <ol>
+            <li><span>Soups that comfort 汤</span><span>p. 14</span></li>
+            <li><span>Steamed, the gentlest way to cook 蒸</span><span>p. 26</span></li>
+            <li><span>Stir-fries with half the oil</span><span>p. 38</span></li>
+            <li><span>Fish and shrimp, tender every time</span><span>p. 49</span></li>
+            <li><span>Dumplings, wontons and potstickers</span><span>p. 60</span></li>
+            <li><span>Vegetables with real flavor</span><span>p. 71</span></li>
+            <li><span>Congee and rice bowls</span><span>p. 83</span></li>
+            <li><span>Sweets with little sugar</span><span>p. 94</span></li>
+            <li><span>Sauces and the Chinese pantry</span><span>p. 104</span></li>
+          </ol>
+        </div>
+        <div>
+          <h3>Inside the food therapy guide</h3>
+          <ol>
+            <li><span>Food as medicine 食疗, the basics</span><span>p. 9</span></li>
+            <li><span>Hot, warm, neutral, cool, cold</span><span>p. 13</span></li>
+            <li><span>The five flavors and what they do</span><span>p. 18</span></li>
+            <li><span>Find your body type: the quiz</span><span>p. 21</span></li>
+            <li><span>Spring and summer, with soups and teas</span><span>p. 35</span></li>
+            <li><span>Late summer, the damp season</span><span>p. 53</span></li>
+            <li><span>Autumn and winter, with soups and teas</span><span>p. 62</span></li>
+            <li><span>Three remedies for every day</span><span>p. 84</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What readers say</span>
+        <h2>Cooked in real kitchens, from Ohio to Ontario.</h2>
+        <div class="rating" id="rating"><span class="stars" aria-hidden="true">★★★★★</span><span><strong data-rating-score>4.9</strong> out of 5 from <strong data-rating-count>127</strong> reader reviews</span></div>
+      </div>
+      <div class="reviews" id="review-list">
+        <article class="review"><span class="stars" aria-label="5 stars">★★★★★</span><p>I've watched Mei's shrimp video three times. Having it written down with the amounts is what I needed. My husband asked for it again the next night.</p><footer><b>Linda K.</b> · Columbus, OH</footer></article>
+        <article class="review"><span class="stars" aria-label="5 stars">★★★★★</span><p>The warming and cooling chart is on my fridge. I'm 67 and never understood what my mother meant by "heaty" food until now.</p><footer><b>Grace T.</b> · San Jose, CA</footer></article>
+        <article class="review"><span class="stars" aria-label="5 stars">★★★★★</span><p>We used to order Chinese twice a week. Now it's once a month and the kids like the potstickers better.</p><footer><b>Mark D.</b> · Raleigh, NC</footer></article>
+        <article class="review"><span class="stars" aria-label="5 stars">★★★★★</span><p>Everything is in my regular Kroger. No hunting for strange ingredients, and she tells you what to swap.</p><footer><b>Patricia W.</b> · Louisville, KY</footer></article>
+        <article class="review"><span class="stars" aria-label="5 stars">★★★★★</span><p>The winter soups helped me eat lighter in the evening. Calm, clear writing, just like her videos.</p><footer><b>Helen M.</b> · Toronto, ON</footer></article>
+        <article class="review"><span class="stars" aria-label="4 stars">★★★★☆</span><p>Lovely books. I'd like more fish recipes in a second edition, but the steamed chapter alone was worth it.</p><footer><b>Robert S.</b> · Tucson, AZ</footer></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section free" id="free">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow" style="color: inherit; opacity: .85">Not sure yet?</span>
+        <h2>Read the soup chapter free.</h2>
+        <p>Six of my favorite soups, the full warming and cooling chart, and how I plan a week of meals. Sent to your inbox, free.</p>
+      </div>
+      <a class="btn btn-ghost btn-block" data-free href="#free" target="_blank" rel="noopener">Send me the free chapter</a>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap narrow">
+      <div class="about">
+        <img data-asset src="mei-portrait.jpg" alt="Mei Zhou in her kitchen, holding a bowl of chicken soup" width="240" height="320" loading="lazy">
+        <div class="stack">
+          <span class="eyebrow">A note from Mei</span>
+          <h2>I learned to cook by watching my grandmother choose food for the weather.</h2>
+          <p>In her kitchen, a cold day meant ginger and a pot of soup on the stove. A hot summer meant mung beans and cucumber. Nobody called it medicine. It was just how you fed a family.</p>
+          <p>On my channel I share these habits one recipe at a time. Many of you asked for everything in one place, with exact amounts. These two books are that: the recipes I cook every week, and the simple food therapy behind them.</p>
+          <span class="signature">Mei Zhou</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <div class="guarantee">
+        <div class="big-seal"><div><b data-guarantee-days>30</b><small>days money back</small></div></div>
+        <div class="stack">
+          <h2>Cook from it for a month. If it's not for you, I refund you.</h2>
+          <p>Email me within <span data-guarantee-days>30</span> days and you get every cent back. No form, no questions, and you keep the books.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Straight answers before you buy.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is this a physical book?</summary><p>No. Both books are digital files you download right after payment, each in two formats. The PDF keeps the full page layout and prints well. The EPUB adjusts the text size to your screen, best for phones and e-readers like Kindle, Kobo or Apple Books.</p></details>
+        <details><summary>I'm not very good with computers. Will I manage?</summary><p>If you can open an email, you can open the books. The download link arrives by email, and if anything goes wrong, write to me and I'll send the files again by hand.</p></details>
+        <details><summary>Will I find the ingredients?</summary><p>Yes. Every recipe was tested with ingredients from a regular supermarket. When something is easier to find at an Asian grocery, I give you a common swap.</p></details>
+        <details><summary>Is this medical advice?</summary><p>No. Traditional Chinese food therapy is a food culture, and these books share it as everyday cooking wisdom. If you have a health condition or take medication, talk to your doctor before changing your diet.</p></details>
+        <details><summary>Is there a subscription?</summary><p>No. You pay once and the books are yours, including free updates to future editions.</p></details>
+        <details><summary>I'm a complete beginner. Is that a problem?</summary><p>Not at all. Each recipe lists the time, the equipment and every step. Start with the soups chapter: it's the easiest place to begin.</p></details>
+        <details><summary>What if I lose the file?</summary><p>The link stays in your email. If you can't find it, write to me and I'll resend it.</p></details>
+        <details><summary>How does the refund work?</summary><p>Email me within <span data-guarantee-days>30</span> days of your purchase and I refund you in full. No questions.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final">
+    <div class="wrap narrow">
+      <div class="stack">
+        <img class="final-photo" data-asset src="mei-tea.jpg" alt="Mei pouring tea by her kitchen window" width="120" height="120" loading="lazy">
+        <h2>Your kitchen, my grandmother's way.</h2>
+        <div class="price-line"><span class="price-now" data-price="bundle">$39</span><span class="price-was" data-ref="bundle">$48</span><span class="save" data-save-text="bundle">Save 19% vs. separately</span></div>
+        <a class="btn btn-buy" data-buy="bundle" href="#books">Get both books now</a>
+        <p class="sale-only" style="color: var(--muted)">Price goes up in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="links">
+        <a data-youtube href="https://www.youtube.com/@Mei-Healthy-Traditional-Recipe" target="_blank" rel="noopener">YouTube</a>
+        <span>Contact: <span data-contact>info@hellomeizhou.com</span></span>
+      </div>
+      <p>Digital product, delivered as PDF and EPUB. One payment, no subscription. Secure checkout. <span data-guarantee-days>30</span>-day money-back guarantee.</p>
+      <p>The information in these books is shared for educational and cultural purposes and is not medical advice. Consult a qualified health professional about any health condition.</p>
+      <p>© 2026 Mei Zhou</p>
+    </div>
+  </footer>
+
+  <div class="buybar" id="buybar" aria-hidden="true">
+    <div class="wrap">
+      <div class="info">
+        <b>The Complete Bundle</b>
+        <small><span data-price="bundle">$39</span> <s data-ref="bundle">$48</s><span class="hide-xs sale-only"> · ends in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></span></small>
+      </div>
+      <a class="btn btn-buy" data-buy="bundle" href="#books" tabindex="-1">Get it</a>
+    </div>
+  </div>
+
+  <div class="modal" id="exit-modal" role="dialog" aria-modal="true" aria-labelledby="exit-title" hidden>
+    <div class="modal-card">
+      <button class="close" type="button" data-close aria-label="Close">×</button>
+      <div class="modal-covers" aria-hidden="true">
+        <img data-asset src="cover-kitchen.jpg" alt="">
+        <img data-asset src="cover-seasons.jpg" alt="">
+      </div>
+      <h2 id="exit-title">Before you go: the <span data-promo-label>Launch sale</span> is still on.</h2>
+      <p data-promo-why style="color: var(--muted); font-size: 1.15rem">the books are new, and so is this price.</p>
+      <p>Both ebooks (PDF + EPUB, instant download) for <strong data-price="bundle">$39</strong> instead of <s data-ref="bundle">$48</s>.</p>
+      <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span>
+      <a class="btn btn-buy btn-block" data-buy="bundle" href="#books">Get the bundle for <span data-price="bundle">$39</span></a>
+      <p style="font-size: 1.1rem; color: var(--muted)"><span data-guarantee-days>30</span>-day money back. You keep the books.</p>
+      <button class="nothanks" type="button" data-close>No thanks, I'll pay full price later</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+<script>
+/* ================== CONFIG: edit this block ================== */
+var CONFIG = {
+  draft: false,                     // true shows the yellow "draft" bar. Set to false before going live.
+  checkout: "gumroad",              // "stripe" or "gumroad"
+  currency: "$",
+  guaranteeDays: 30,
+  youtubeUrl: "https://www.youtube.com/@Mei-Healthy-Traditional-Recipe",
+  contactEmail: "info@hellomeizhou.com",
+  freeChapterUrl: "https://meizhou.gumroad.com/l/free-soup-chapter", // a $0 Gumroad product collects emails
+
+  exitPopup: true,
+
+  // Festival sales: during these windows the extra "sale" price applies, with a real countdown.
+  // Times are US Eastern (-05:00 in winter, -04:00 in summer). Add new years at the end.
+  promotions: [
+    { start: "2026-10-01T00:00:00-04:00", end: "2026-11-09T23:59:59-05:00", label: "Launch sale", short: "Launch price", why: "the books are new, and so is this price." },
+    { start: "2026-11-25T00:00:00-05:00", end: "2026-11-30T23:59:59-05:00", label: "Black Friday sale", short: "Black Friday price", why: "my one sale of the American shopping week." },
+    { start: "2026-12-15T00:00:00-05:00", end: "2026-12-22T23:59:59-05:00", label: "Winter Solstice sale", short: "Solstice price", why: "Dōngzhì is when Chinese families gather for dumplings and warm soup." },
+    { start: "2027-01-30T00:00:00-05:00", end: "2027-02-10T23:59:59-05:00", label: "Lunar New Year sale", short: "New Year price", why: "welcoming the Year of the Goat with food for a long, healthy year." },
+    { start: "2027-05-03T00:00:00-04:00", end: "2027-05-09T23:59:59-04:00", label: "Mother’s Day sale", short: "Mother’s Day price", why: "every recipe in these books started with a mother." },
+    { start: "2027-06-04T00:00:00-04:00", end: "2027-06-10T23:59:59-04:00", label: "Dragon Boat Festival sale", short: "Festival price", why: "the Chinese start of summer, and of summer eating." },
+    { start: "2027-09-10T00:00:00-04:00", end: "2027-09-16T23:59:59-04:00", label: "Mid-Autumn Festival sale", short: "Moon Festival price", why: "the harvest moon, when families share mooncakes and pears." },
+    { start: "2027-11-24T00:00:00-05:00", end: "2027-11-29T23:59:59-05:00", label: "Black Friday sale", short: "Black Friday price", why: "my one sale of the American shopping week." },
+    { start: "2027-12-15T00:00:00-05:00", end: "2027-12-22T23:59:59-05:00", label: "Winter Solstice sale", short: "Solstice price", why: "Dōngzhì is when Chinese families gather for dumplings and warm soup." },
+    { start: "2028-01-20T00:00:00-05:00", end: "2028-01-30T23:59:59-05:00", label: "Lunar New Year sale", short: "New Year price", why: "welcoming the Year of the Monkey with food for a long, healthy year." },
+    { start: "2028-05-08T00:00:00-04:00", end: "2028-05-14T23:59:59-04:00", label: "Mother’s Day sale", short: "Mother’s Day price", why: "every recipe in these books started with a mother." },
+    { start: "2028-05-23T00:00:00-04:00", end: "2028-05-29T23:59:59-04:00", label: "Dragon Boat Festival sale", short: "Festival price", why: "the Chinese start of summer, and of summer eating." },
+    { start: "2028-09-28T00:00:00-04:00", end: "2028-10-04T23:59:59-04:00", label: "Mid-Autumn Festival sale", short: "Moon Festival price", why: "the harvest moon, when families share mooncakes and pears." },
+    { start: "2028-11-22T00:00:00-05:00", end: "2028-11-27T23:59:59-05:00", label: "Black Friday sale", short: "Black Friday price", why: "my one sale of the American shopping week." },
+    { start: "2028-12-15T00:00:00-05:00", end: "2028-12-21T23:59:59-05:00", label: "Winter Solstice sale", short: "Solstice price", why: "Dōngzhì is when Chinese families gather for dumplings and warm soup." }
+  ],
+
+  // Between festivals the page always shows the season of the Chinese solar calendar (24 terms, one every ~15 days).
+  // md = month * 100 + day of the first day of each term.
+  terms: [
+    { md: 105,  zh: "小寒", en: "Lesser Cold", why: "the cold deepens, so warm yourself from the inside." },
+    { md: 120,  zh: "大寒", en: "Greater Cold", why: "the coldest days, and the coziest soups." },
+    { md: 204,  zh: "立春", en: "Beginning of Spring", why: "time to lighten winter meals with young greens." },
+    { md: 219,  zh: "雨水", en: "Rain Water", why: "damp days call for warm congee and ginger." },
+    { md: 305,  zh: "惊蛰", en: "Awakening of Insects", why: "spring stirs, and so should your cooking." },
+    { md: 320,  zh: "春分", en: "Spring Equinox", why: "day and night in balance, and your plate too." },
+    { md: 404,  zh: "清明", en: "Clear and Bright", why: "fresh spring greens and gentle soups." },
+    { md: 420,  zh: "谷雨", en: "Grain Rain", why: "the last spring rains, time to clear the damp." },
+    { md: 505,  zh: "立夏", en: "Beginning of Summer", why: "lighter, cooling dishes for warmer days." },
+    { md: 521,  zh: "小满", en: "Lesser Fullness", why: "early summer, the season of cool greens." },
+    { md: 605,  zh: "芒种", en: "Grain in Ear", why: "humid heat begins: mung beans and winter melon." },
+    { md: 621,  zh: "夏至", en: "Summer Solstice", why: "the longest day, and the coolest soups." },
+    { md: 707,  zh: "小暑", en: "Lesser Heat", why: "beat the heat without iced drinks." },
+    { md: 722,  zh: "大暑", en: "Greater Heat", why: "the hottest weeks call for cooling soups and teas." },
+    { md: 807,  zh: "立秋", en: "Beginning of Autumn", why: "time to build a little strength for the cold months." },
+    { md: 823,  zh: "处暑", en: "End of Heat", why: "summer fades, so be kind to your digestion." },
+    { md: 907,  zh: "白露", en: "White Dew", why: "dry air begins: pears and snow fungus." },
+    { md: 922,  zh: "秋分", en: "Autumn Equinox", why: "balance returns, so moisten the dry season." },
+    { md: 1008, zh: "寒露", en: "Cold Dew", why: "cool mornings call for warm porridge." },
+    { md: 1023, zh: "霜降", en: "Frost’s Descent", why: "the first frost, and the first warming stews." },
+    { md: 1107, zh: "立冬", en: "Beginning of Winter", why: "the season of warming soups begins." },
+    { md: 1122, zh: "小雪", en: "Lesser Snow", why: "slow-simmered soups for colder nights." },
+    { md: 1207, zh: "大雪", en: "Greater Snow", why: "deep winter: ginger, red dates and long soups." },
+    { md: 1221, zh: "冬至", en: "Winter Solstice", why: "the longest night, made for dumplings and soup." }
+  ],
+
+  // regular = everyday price, sale = festival price. The bundle is always compared with both books at their regular price.
+  // "full" links charge the regular price, "sale" links the festival price.
+  products: {
+    kitchen: {
+      regular: 29, sale: 25,
+      stripe:  { sale: "https://buy.stripe.com/REPLACE_kitchen_sale",  full: "https://buy.stripe.com/REPLACE_kitchen_full" },
+      gumroad: { sale: "https://meizhou.gumroad.com/l/chinese_home_kitchen", full: "https://meizhou.gumroad.com/l/chinese_home_kitchen" }
+    },
+    seasons: {
+      regular: 19, sale: 16,
+      stripe:  { sale: "https://buy.stripe.com/REPLACE_seasons_sale",  full: "https://buy.stripe.com/REPLACE_seasons_full" },
+      gumroad: { sale: "https://meizhou.gumroad.com/l/eat_for_the_season", full: "https://meizhou.gumroad.com/l/eat_for_the_season" }
+    },
+    bundle: {
+      regular: 39, sale: 34,
+      stripe:  { sale: "https://buy.stripe.com/REPLACE_bundle_sale",   full: "https://buy.stripe.com/REPLACE_bundle_full" },
+      gumroad: { sale: "https://meizhou.gumroad.com/l/complete_bundle", full: "https://meizhou.gumroad.com/l/complete_bundle" }
+    }
+  },
+
+  rating: { score: 4.9, count: 127 },  // set count to 0 to hide the rating line
+
+  // Where the photos and sample PDFs are hosted. Leave "" when the "assets" folder sits next to this page.
+  // On Carrd, upload the assets folder elsewhere (see notes) and put its URL here, ending with a slash.
+  assetBase: "./",
+  samples: {
+    kitchen: { file: "sample-home-kitchen.pdf", pages: 11 },
+    seasons: { file: "sample-eat-for-the-season.pdf", pages: 10 }
+  }
+};
+/* ============================================================= */
+
+(function () {
+  var root = document.getElementById("mei");
+  var $$ = function (sel) { return Array.prototype.slice.call(root.querySelectorAll(sel)); };
+  var money = function (n) { return CONFIG.currency + n; };
+
+  function store(kind, key, value) {
+    try {
+      var s = kind === "local" ? window.localStorage : window.sessionStorage;
+      if (value === undefined) return s.getItem(key);
+      s.setItem(key, value);
+    } catch (e) { return null; }
+  }
+
+  var PROMO = null, END = 0;
+  function findPromo() {
+    var now = Date.now();
+    PROMO = null;
+    (CONFIG.promotions || []).some(function (p) {
+      if (now >= Date.parse(p.start) && now < Date.parse(p.end)) { PROMO = p; return true; }
+      return false;
+    });
+    END = PROMO ? Date.parse(PROMO.end) : 0;
+  }
+  findPromo();
+  var onSale = function () { return !!PROMO && Date.now() < END; };
+
+  function currentTerm() {
+    var d = new Date(Date.now()), md = (d.getMonth() + 1) * 100 + d.getDate();
+    var list = CONFIG.terms, cur = list[list.length - 1];
+    list.forEach(function (t) { if (t.md <= md) cur = t; });
+    return cur;
+  }
+
+  function render() {
+    findPromo();
+    var live = onSale();
+    if (PROMO) {
+      $$("[data-promo-label]").forEach(function (el) { el.textContent = PROMO.label; });
+      $$("[data-promo-short]").forEach(function (el) { el.textContent = PROMO.short; });
+      $$("[data-promo-why]").forEach(function (el) { el.textContent = PROMO.why; });
+    }
+    root.classList.toggle("ended", !live);
+    $$(".ended-only").forEach(function (el) { el.hidden = live; });
+    var term = currentTerm();
+    $$("[data-term-label]").forEach(function (el) { el.textContent = term.zh + " " + term.en; });
+    $$("[data-term-why]").forEach(function (el) { el.textContent = term.why; });
+    var separately = CONFIG.products.kitchen.regular + CONFIG.products.seasons.regular;
+    Object.keys(CONFIG.products).forEach(function (id) {
+      var p = CONFIG.products[id];
+      var ref = id === "bundle" ? separately : (live ? p.regular : null);
+      var pct = ref ? Math.round((ref - (live ? p.sale : p.regular)) / ref * 100) : 0;
+      $$('[data-price="' + id + '"]').forEach(function (el) { el.textContent = money(live ? p.sale : p.regular); });
+      $$('[data-ref="' + id + '"]').forEach(function (el) { el.hidden = !ref; if (ref) el.textContent = money(ref); });
+      $$('[data-save-text="' + id + '"]').forEach(function (el) {
+        el.textContent = live ? "Save " + pct + "% · " + PROMO.short : "Save " + pct + "% vs. separately";
+      });
+      var links = p[CONFIG.checkout] || p.stripe;
+      $$('[data-buy="' + id + '"]').forEach(function (el) {
+        el.href = live ? links.sale : links.full;
+        el.target = "_blank";
+        el.rel = "noopener";
+        if (CONFIG.checkout === "gumroad") el.setAttribute("data-gumroad-overlay-checkout", "true");
+      });
+    });
+  }
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function tick() {
+    var left = PROMO ? Math.max(0, END - Date.now()) : 0;
+    var d = Math.floor(left / 86400000), h = Math.floor(left / 3600000) % 24,
+        m = Math.floor(left / 60000) % 60, s = Math.floor(left / 1000) % 60;
+    $$("[data-countdown]").forEach(function (t) {
+      var dEl = t.querySelector("[data-d]"), hEl = t.querySelector("[data-h]");
+      if (dEl) dEl.textContent = d + "d";
+      if (hEl) hEl.textContent = (dEl ? pad(h) : pad(h + d * 24)) + "h";
+      t.querySelector("[data-m]").textContent = pad(m) + "m";
+      t.querySelector("[data-s]").textContent = pad(s) + "s";
+    });
+    if (PROMO && left === 0) render();
+  }
+
+  // Static text from config
+  $$("[data-guarantee-days]").forEach(function (el) { el.textContent = CONFIG.guaranteeDays; });
+  $$("[data-youtube]").forEach(function (el) { el.href = CONFIG.youtubeUrl; });
+  $$("[data-contact]").forEach(function (el) { el.textContent = CONFIG.contactEmail; });
+  $$("[data-free]").forEach(function (el) { el.href = CONFIG.freeChapterUrl; });
+  document.getElementById("draft-notice").hidden = !CONFIG.draft;
+  if (!CONFIG.rating.count) document.getElementById("rating").hidden = true;
+  else {
+    $$("[data-rating-score]").forEach(function (el) { el.textContent = CONFIG.rating.score; });
+    $$("[data-rating-count]").forEach(function (el) { el.textContent = CONFIG.rating.count; });
+  }
+
+  render();
+  tick();
+  setInterval(tick, 1000);
+
+  // Asset URLs (photos and sample PDFs)
+  function asset(name) { return (CONFIG.assetBase || "assets/") + name; }
+  if (CONFIG.assetBase) {
+    $$("img[data-asset]").forEach(function (img) { img.src = asset(img.getAttribute("src").replace(/^assets\//, "")); });
+  }
+
+  // Sample viewer (pdf.js)
+  (function viewer() {
+    var canvas = document.getElementById("viewer-canvas");
+    var status = document.getElementById("viewer-status");
+    var prev = document.getElementById("viewer-prev"), next = document.getElementById("viewer-next");
+    var range = document.getElementById("viewer-range"), numEl = document.getElementById("viewer-num"), totalEl = document.getElementById("viewer-total");
+    var stage = document.getElementById("viewer-stage");
+    var tabs = $$(".viewer-tabs button");
+    var pdf = null, page = 1, rendering = null, current = "kitchen", loadToken = 0;
+
+    function showStatus(msg) { status.hidden = !msg; status.textContent = msg || ""; }
+    function updateBar() {
+      var total = pdf ? pdf.numPages : CONFIG.samples[current].pages;
+      numEl.textContent = page; totalEl.textContent = total;
+      range.max = total; range.value = page;
+      prev.disabled = page <= 1; next.disabled = page >= total;
+    }
+    function render() {
+      if (!pdf) return;
+      var n = page;
+      pdf.getPage(n).then(function (p) {
+        var stageW = stage.clientWidth - (window.innerWidth <= 520 ? 16 : 96);
+        var maxH = Math.min(window.innerHeight * 0.72, 760);
+        var base = p.getViewport({ scale: 1 });
+        var scale = Math.max(0.3, Math.min(stageW / base.width, maxH / base.height));
+        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+        var vp = p.getViewport({ scale: scale * ratio });
+        canvas.width = Math.floor(vp.width); canvas.height = Math.floor(vp.height);
+        canvas.style.width = Math.floor(vp.width / ratio) + "px";
+        canvas.style.height = Math.floor(vp.height / ratio) + "px";
+        if (rendering) { try { rendering.cancel(); } catch (e) {} }
+        rendering = p.render({ canvasContext: canvas.getContext("2d"), viewport: vp });
+        return rendering.promise.then(function () { rendering = null; showStatus(""); });
+      }).catch(function (e) { if (e && e.name !== "RenderingCancelledException") console.warn(e); });
+    }
+    function go(n) {
+      var total = pdf ? pdf.numPages : 1;
+      page = Math.max(1, Math.min(total, n));
+      updateBar(); render();
+    }
+    function load(key) {
+      current = key; page = 1; pdf = null;
+      var url = asset(CONFIG.samples[key].file);
+      tabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.sample === key ? "true" : "false"); });
+      updateBar();
+      if (!window.pdfjsLib) { showStatus("The page viewer could not load. Use “Open the sample PDF” below."); return; }
+      showStatus("Opening the sample…");
+      var token = ++loadToken;
+      pdfjsLib.getDocument({ url: url, isEvalSupported: false }).promise.then(function (doc) {
+        if (token !== loadToken) return;
+        pdf = doc; go(1);
+      }).catch(function () {
+        if (token !== loadToken) return;
+        showStatus("This sample could not be opened here.");
+      });
+    }
+    if (window.pdfjsLib) {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    }
+    prev.addEventListener("click", function () { go(page - 1); });
+    next.addEventListener("click", function () { go(page + 1); });
+    range.addEventListener("input", function () { go(parseInt(range.value, 10)); });
+    tabs.forEach(function (t) { t.addEventListener("click", function () { if (t.dataset.sample !== current) load(t.dataset.sample); }); });
+    stage.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { go(page + 1); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { go(page - 1); e.preventDefault(); }
+    });
+    var x0 = null;
+    stage.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) go(page + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+    var rt;
+    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(render, 150); });
+    load("kitchen");
+  })();
+
+
+  if (CONFIG.checkout === "gumroad") {
+    var g = document.createElement("script");
+    g.src = "https://gumroad.com/js/gumroad.js";
+    g.async = true;
+    document.body.appendChild(g);
+  }
+
+  // Sticky buy bar: visible once the hero is scrolled past
+  var bar = document.getElementById("buybar");
+  var hero = document.getElementById("hero");
+  var books = document.getElementById("books");
+  function updateBar() {
+    var past = hero.getBoundingClientRect().bottom < 0;
+    var r = books.getBoundingClientRect();
+    var onBooks = r.top < window.innerHeight * .6 && r.bottom > window.innerHeight * .4;
+    var show = past && !onBooks;
+    bar.classList.toggle("show", show);
+    bar.setAttribute("aria-hidden", show ? "false" : "true");
+    bar.querySelector("a").tabIndex = show ? 0 : -1;
+  }
+  window.addEventListener("scroll", updateBar, { passive: true });
+  updateBar();
+
+  // Exit-intent popup: once per session, only while the sale is live
+  var modal = document.getElementById("exit-modal");
+  var lastFocus = null;
+  function openModal() {
+    if (!CONFIG.exitPopup || !onSale() || store("session", "mei_exit_seen")) return;
+    store("session", "mei_exit_seen", "1");
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    modal.querySelector("[data-buy]").focus();
+  }
+  function closeModal() {
+    modal.hidden = true;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $$("[data-close]").forEach(function (b) { b.addEventListener("click", closeModal); });
+  modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeModal(); });
+  document.addEventListener("mouseout", function (e) {
+    if (!e.relatedTarget && e.clientY <= 0) openModal();
+  });
+  // Touch screens have no exit intent: show it after 45 s once the reader has scrolled halfway
+  if (window.matchMedia("(hover: none)").matches) {
+    setTimeout(function () {
+      var half = window.scrollY > (document.documentElement.scrollHeight - window.innerHeight) / 2;
+      if (half) openModal();
+      else window.addEventListener("scroll", function onS() {
+        if (window.scrollY > (document.documentElement.scrollHeight - window.innerHeight) / 2) {
+          window.removeEventListener("scroll", onS);
+          openModal();
+        }
+      }, { passive: true });
+    }, 45000);
+  }
+})();
+</script>
+
+</body>
+</html>
