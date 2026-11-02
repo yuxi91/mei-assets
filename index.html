@@ -729,6 +729,10 @@ var CONFIG = {
 
   exitPopup: true,
 
+  // Visitor analytics (Umami Cloud, no cookies). Paste the Website ID from cloud.umami.is.
+  // Only visits on these domains are counted, so previews and local tests stay out of the numbers.
+  analytics: { umamiWebsiteId: "", domains: "kitchen.hellomeizhou.com" },
+
   // Festival sales: during these windows the extra "sale" price applies, with a real countdown.
   // Times are US Eastern (-05:00 in winter, -04:00 in summer). Add new years at the end.
   promotions: [
@@ -823,6 +827,36 @@ var CONFIG = {
     } catch (e) { return null; }
   }
 
+  // Analytics: Umami events, and the visit's UTM tags (e.g. from a YouTube description) carried on to Gumroad
+  var UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  var utm = (function () {
+    var q = new URLSearchParams(window.location.search), found = {};
+    UTM_KEYS.forEach(function (k) { if (q.get(k)) found[k] = q.get(k).slice(0, 100); });
+    if (Object.keys(found).length) store("session", "mei_utm", JSON.stringify(found));
+    else { try { found = JSON.parse(store("session", "mei_utm") || "{}") || {}; } catch (e) { found = {}; } }
+    return found;
+  })();
+  function withUtm(url) {
+    if (!url || !Object.keys(utm).length) return url;
+    var u = new URL(url, window.location.href);
+    UTM_KEYS.forEach(function (k) { if (utm[k]) u.searchParams.set(k, utm[k]); });
+    return u.toString();
+  }
+  var trackQueue = [];
+  function track(name, data) {
+    if (window.umami && window.umami.track) window.umami.track(name, data);
+    else if (trackQueue.length < 50) trackQueue.push([name, data]);
+  }
+  if (CONFIG.analytics && CONFIG.analytics.umamiWebsiteId) {
+    var um = document.createElement("script");
+    um.defer = true;
+    um.src = "https://cloud.umami.is/script.js";
+    um.setAttribute("data-website-id", CONFIG.analytics.umamiWebsiteId);
+    if (CONFIG.analytics.domains) um.setAttribute("data-domains", CONFIG.analytics.domains);
+    um.onload = function () { trackQueue.splice(0).forEach(function (e) { track(e[0], e[1]); }); };
+    document.head.appendChild(um);
+  }
+
   var PROMO = null, END = 0;
   function findPromo() {
     var now = Date.now();
@@ -868,7 +902,7 @@ var CONFIG = {
       });
       var links = p[CONFIG.checkout] || p.stripe;
       $$('[data-buy="' + id + '"]').forEach(function (el) {
-        el.href = live ? links.sale : links.full;
+        el.href = withUtm(live ? links.sale : links.full);
         el.target = "_blank";
         el.rel = "noopener";
         if (CONFIG.checkout === "gumroad") el.setAttribute("data-gumroad-overlay-checkout", "true");
@@ -895,7 +929,7 @@ var CONFIG = {
   $$("[data-guarantee-days]").forEach(function (el) { el.textContent = CONFIG.guaranteeDays; });
   $$("[data-youtube]").forEach(function (el) { el.href = CONFIG.youtubeUrl; });
   $$("[data-contact]").forEach(function (el) { el.textContent = CONFIG.contactEmail; });
-  $$("[data-free]").forEach(function (el) { el.href = CONFIG.freeChapterUrl; });
+  $$("[data-free]").forEach(function (el) { el.href = withUtm(CONFIG.freeChapterUrl); });
   document.getElementById("draft-notice").hidden = !CONFIG.draft;
   if (!CONFIG.rating.count) document.getElementById("rating").hidden = true;
   else {
@@ -922,6 +956,7 @@ var CONFIG = {
     var stage = document.getElementById("viewer-stage");
     var tabs = $$(".viewer-tabs button");
     var pdf = null, page = 1, rendering = null, current = "kitchen", loadToken = 0;
+    var reached = {};
 
     function showStatus(msg) { status.hidden = !msg; status.textContent = msg || ""; }
     function updateBar() {
@@ -952,13 +987,16 @@ var CONFIG = {
       var total = pdf ? pdf.numPages : 1;
       page = Math.max(1, Math.min(total, n));
       updateBar(); render();
+      // Once per book: started leafing through, and reached the last sample page
+      if (page > 1 && !reached[current + ":start"]) { reached[current + ":start"] = 1; track("sample_start", { book: current }); }
+      if (pdf && page === total && total > 1 && !reached[current + ":end"]) { reached[current + ":end"] = 1; track("sample_end", { book: current }); }
     }
     function load(key) {
       current = key; page = 1; pdf = null;
       var url = asset(CONFIG.samples[key].file);
       tabs.forEach(function (t) { t.setAttribute("aria-selected", t.dataset.sample === key ? "true" : "false"); });
       updateBar();
-      if (!window.pdfjsLib) { showStatus("The page viewer could not load. Use “Open the sample PDF” below."); return; }
+      if (!window.pdfjsLib) { showStatus("The page viewer could not load."); return; }
       showStatus("Opening the sample…");
       var token = ++loadToken;
       pdfjsLib.getDocument({ url: url, isEvalSupported: false }).promise.then(function (doc) {
@@ -975,7 +1013,11 @@ var CONFIG = {
     prev.addEventListener("click", function () { go(page - 1); });
     next.addEventListener("click", function () { go(page + 1); });
     range.addEventListener("input", function () { go(parseInt(range.value, 10)); });
-    tabs.forEach(function (t) { t.addEventListener("click", function () { if (t.dataset.sample !== current) load(t.dataset.sample); }); });
+    tabs.forEach(function (t) { t.addEventListener("click", function () {
+      if (t.dataset.sample === current) return;
+      load(t.dataset.sample);
+      track("sample_tab", { book: t.dataset.sample });
+    }); });
     stage.addEventListener("keydown", function (e) {
       if (e.key === "ArrowRight") { go(page + 1); e.preventDefault(); }
       if (e.key === "ArrowLeft") { go(page - 1); e.preventDefault(); }
@@ -1025,8 +1067,10 @@ var CONFIG = {
     lastFocus = document.activeElement;
     modal.hidden = false;
     modal.querySelector("[data-buy]").focus();
+    track("exit_popup_shown");
   }
   function closeModal() {
+    if (!modal.hidden) track("exit_popup_close");
     modal.hidden = true;
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
@@ -1048,6 +1092,39 @@ var CONFIG = {
         }
       }, { passive: true });
     }, 45000);
+  }
+
+  // Analytics events. Clicks are caught in the capture phase, before the Gumroad overlay takes over.
+  function place(el) { var s = el.closest("section[id], #buybar, #exit-modal, header, footer"); return s ? (s.id || s.tagName.toLowerCase()) : "page"; }
+  window.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("#mei a");
+    if (!a) return;
+    if (a.hasAttribute("data-buy")) {
+      var id = a.getAttribute("data-buy"), p = CONFIG.products[id], live = onSale();
+      track("buy_click", { product: id, price: live ? p.sale : p.regular, offer: live ? PROMO.short : "regular", place: place(a) });
+    } else if (a.hasAttribute("data-free")) track("free_chapter_click", { place: place(a) });
+    else if (/youtube\.com/.test(a.href)) track("youtube_click", { place: place(a) });
+  }, true);
+  $$(".faq details").forEach(function (d) {
+    d.addEventListener("toggle", function () {
+      if (d.open) track("faq_open", { question: d.querySelector("summary").textContent.trim().slice(0, 120) });
+    });
+  });
+  // Which parts of the page people actually reach (one event per section per visit)
+  if ("IntersectionObserver" in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var id = en.target.id;
+        if (!en.isIntersecting || seen[id]) return;
+        seen[id] = 1; io.unobserve(en.target);
+        track("view_" + id);
+      });
+    }, { threshold: 0.35 });
+    ["how", "kitchen", "math", "inside", "books", "reviews", "free", "about", "faq"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
   }
 })();
 </script>
