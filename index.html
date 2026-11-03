@@ -103,7 +103,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 12px 26px; border-radius: 10px; font-weight: 700; font-size: 1.3rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .15s ease, background-color .15s ease; text-align: center; }
-.btn-buy { background: var(--cinnabar); color: var(--on-cinnabar); box-shadow: 0 6px 0 var(--cinnabar-deep); }
+.mei .btn-buy { background: var(--cinnabar); color: var(--on-cinnabar); box-shadow: 0 6px 0 var(--cinnabar-deep); }
 .btn-buy:hover { transform: translateY(-1px); }
 .btn-buy:active { transform: translateY(3px); box-shadow: 0 3px 0 var(--cinnabar-deep); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
@@ -157,7 +157,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .steps li::before { content: counter(s); font-family: var(--font-display); font-size: 2.4rem; line-height: 1; color: var(--cinnabar); }
 .steps h3 { font-size: var(--step-1); }
 .steps p { color: var(--muted); }
-.steps-note { margin-top: 28px; color: var(--muted); }
+.steps-note { margin-top: 56px; font-size: var(--step-1); font-weight: 700; color: var(--ink); }
 @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
 
 /* Math table */
