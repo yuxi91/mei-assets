@@ -1120,7 +1120,7 @@ var CONFIG = {
         seen[id] = 1; io.unobserve(en.target);
         track("view_" + id);
       });
-    }, { threshold: 0.35 });
+    }, { rootMargin: "0px 0px -40% 0px", threshold: 0 });  // counts once the section reaches the top 60% of the screen, whatever its height
     ["how", "kitchen", "math", "inside", "books", "reviews", "free", "about", "faq"].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) io.observe(el);
