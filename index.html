@@ -343,6 +343,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
 /* Sale-ended state */
 .mei.ended .sale-only { display: none !important; }
+.mei.no-end .countdown-only { display: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .mei *, .mei *::before, .mei *::after { transition: none !important; animation: none !important; }
@@ -357,9 +358,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 
   <div class="salebar" id="salebar">
     <div class="wrap">
-      <span class="sale-only"><strong data-promo-label>Launch sale</strong>: <span data-promo-why>the books are new, and so is this price.</span> Both books <strong data-price="bundle">$34</strong> <span class="old">(<s data-ref="bundle">$34</s>)</span>, ends in</span>
-      <span class="timer sale-only" data-countdown aria-label="Time left in the launch sale"><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span>
-      <span class="ended-only" hidden><strong data-term-label>霜降 Frost’s Descent</strong>: <span data-term-why>the first frost, and the first warming stews.</span> Both books <strong data-price="bundle">$34</strong> <span class="old">(<s data-ref="bundle">$41</s> bought separately)</span></span>
+      <span class="sale-only"><strong data-promo-label>Launch sale</strong>: <span data-promo-why>the books are new, and so is this price.</span> Both books <strong data-price="bundle">$34</strong> <span class="old">(<s data-ref="bundle">$48</s>)</span><span class="countdown-only">, ends in</span></span>
+      <span class="timer sale-only countdown-only" data-countdown aria-label="Time left in the launch sale"><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span>
+      <span class="ended-only" hidden><strong data-term-label>霜降 Frost’s Descent</strong>: <span data-term-why>the first frost, and the first warming stews.</span> Both books <strong data-price="bundle">$34</strong> <span class="old">(<s data-ref="bundle">$48</s> bought separately)</span></span>
       <a href="#books">See the offer</a>
     </div>
   </div>
@@ -382,8 +383,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
         <p class="lede">51 traditional home recipes, 24 seasonal soups and teas, and a plain-English guide to Chinese food therapy. The same tricks you see in my videos, written down step by step, with ingredients from an ordinary grocery store.</p>
         <div class="price-line">
           <span class="price-now" data-price="bundle">$34</span>
-          <span class="price-was" data-ref="bundle">$41</span>
-          <span class="save" data-save-text="bundle">Save 17% vs. separately</span>
+          <span class="price-was" data-ref="bundle">$48</span>
+          <span class="save" data-save-text="bundle">Save 29% · Launch price</span>
         </div>
         <div class="cta-row">
           <a class="btn btn-buy" data-buy="bundle" href="#books">Get both books</a>
@@ -500,7 +501,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
             <li>Hand-drawn botanical plates from the 1820s open every chapter.</li>
             <li>Print the pages you love. The PDF is made for it.</li>
           </ul>
-          <div class="price-line"><span class="price-now" data-price="bundle">$34</span><span class="price-was" data-ref="bundle">$41</span><span class="save">Both books</span></div>
+          <div class="price-line"><span class="price-now" data-price="bundle">$34</span><span class="price-was" data-ref="bundle">$48</span><span class="save">Both books</span></div>
           <a class="btn btn-buy" data-buy="bundle" href="#books">Get both books</a>
         </div>
       </div>
@@ -512,7 +513,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <div class="section-head">
         <span class="eyebrow">Choose your copy</span>
         <h2>Two books that work together: one for the stove, one for the season.</h2>
-        <p class="lede sale-only"><span data-promo-label>Launch sale</span> prices end in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></p>
+        <p class="lede sale-only countdown-only"><span data-promo-label>Launch sale</span> prices end in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></p>
       </div>
       <div class="books">
         <article class="book">
@@ -524,7 +525,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
             <li>Less oil, salt and sugar than takeout</li>
             <li>US cups and ounces next to grams</li>
           </ul>
-          <div class="price-line"><span class="price-now" data-price="kitchen">$25</span><span class="price-was sale-only" data-ref="kitchen">$25</span></div>
+          <div class="price-line"><span class="price-now" data-price="kitchen">$25</span><span class="price-was sale-only" data-ref="kitchen">$29</span></div>
           <a class="btn btn-ghost btn-block" data-buy="kitchen" href="#books">Get the cookbook</a>
         </article>
         <article class="book best">
@@ -537,7 +538,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
             <li class="bonus">Bonus: warming and cooling foods fridge chart</li>
             <li class="bonus">Bonus: Chinese pantry shopping list, by aisle</li>
           </ul>
-          <div class="price-line"><span class="price-now" data-price="bundle">$34</span><span class="price-was" data-ref="bundle">$41</span><span class="save" data-save-text="bundle">Save 17% vs. separately</span></div>
+          <div class="price-line"><span class="price-now" data-price="bundle">$34</span><span class="price-was" data-ref="bundle">$48</span><span class="save" data-save-text="bundle">Save 29% · Launch price</span></div>
           <a class="btn btn-buy btn-block" data-buy="bundle" href="#books">Get the bundle</a>
           <p class="fine">One payment. <span data-guarantee-days>30</span>-day money back. You keep the books.</p>
         </article>
@@ -550,7 +551,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
             <li>Menus for spring, summer, autumn and winter</li>
             <li>24 soups and teas, season by season</li>
           </ul>
-          <div class="price-line"><span class="price-now" data-price="seasons">$16</span><span class="price-was sale-only" data-ref="seasons">$16</span></div>
+          <div class="price-line"><span class="price-now" data-price="seasons">$16</span><span class="price-was sale-only" data-ref="seasons">$19</span></div>
           <a class="btn btn-ghost btn-block" data-buy="seasons" href="#books">Get the guide</a>
         </article>
       </div>
@@ -667,9 +668,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       <div class="stack">
         <img class="final-photo" data-asset src="mei-tea.jpg" alt="Mei pouring tea by her kitchen window" width="120" height="120" loading="lazy">
         <h2>Your kitchen, my grandmother's way.</h2>
-        <div class="price-line"><span class="price-now" data-price="bundle">$34</span><span class="price-was" data-ref="bundle">$41</span><span class="save" data-save-text="bundle">Save 17% vs. separately</span></div>
+        <div class="price-line"><span class="price-now" data-price="bundle">$34</span><span class="price-was" data-ref="bundle">$48</span><span class="save" data-save-text="bundle">Save 29% · Launch price</span></div>
         <a class="btn btn-buy" data-buy="bundle" href="#books">Get both books now</a>
-        <p class="sale-only" style="color: var(--muted)">Price goes up in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></p>
+        <p class="sale-only countdown-only" style="color: var(--muted)">Price goes up in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></p>
       </div>
     </div>
   </section>
@@ -690,7 +691,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     <div class="wrap">
       <div class="info">
         <b>The Complete Bundle</b>
-        <small><span data-price="bundle">$34</span> <s data-ref="bundle">$41</s><span class="hide-xs sale-only"> · ends in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></span></small>
+        <small><span data-price="bundle">$34</span> <s data-ref="bundle">$48</s><span class="hide-xs sale-only countdown-only"> · ends in <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span></span></small>
       </div>
       <a class="btn btn-buy" data-buy="bundle" href="#books" tabindex="-1">Get it</a>
     </div>
@@ -705,7 +706,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
       </div>
       <h2 id="exit-title">Before you go: the <span data-promo-label>Launch sale</span> is still on.</h2>
       <p data-promo-why style="color: var(--muted); font-size: 1.15rem">the books are new, and so is this price.</p>
-      <p>Both ebooks (PDF + EPUB, instant download) for <strong data-price="bundle">$34</strong> instead of <s data-ref="bundle">$41</s>.</p>
+      <p>Both ebooks (PDF + EPUB, instant download) for <strong data-price="bundle">$34</strong> instead of <s data-ref="bundle">$48</s>.</p>
       <span class="timer light" data-countdown><span data-d>--d</span><span data-h>--h</span><span data-m>--m</span><span data-s>--s</span></span>
       <a class="btn btn-buy btn-block" data-buy="bundle" href="#books">Get the bundle for <span data-price="bundle">$34</span></a>
       <p style="font-size: 1.1rem; color: var(--muted)"><span data-guarantee-days>30</span>-day money back. You keep the books.</p>
@@ -734,11 +735,13 @@ var CONFIG = {
   analytics: { umamiWebsiteId: "52d7e676-6bd6-4119-a096-48c41cbac169", domains: "kitchen.hellomeizhou.com" },
 
   // Festival sales: during these windows the extra "sale" price applies, with a real countdown.
-  // Off for now: the prices are the same all year. To bring a festival back, move it into promotions with a lower sale price.
-  promotions: [],
+  // A promotion without "end" runs until removed, with no countdown (the launch price).
+  promotions: [
+    { start: "2026-10-01T00:00:00-04:00", label: "Launch sale", short: "Launch price", why: "the books are new, and so is this price." }
+  ],
+  // Off while the launch price runs. To bring a festival back, move it into promotions above the launch price, with a lower sale price.
   // Times are US Eastern (-05:00 in winter, -04:00 in summer). Add new years at the end.
   festivalsOff: [
-    { start: "2026-10-01T00:00:00-04:00", end: "2026-11-24T23:59:59-05:00", label: "Launch sale", short: "Launch price", why: "the books are new, and so is this price." },
     { start: "2026-11-25T00:00:00-05:00", end: "2026-11-30T23:59:59-05:00", label: "Black Friday sale", short: "Black Friday price", why: "my one sale of the American shopping week." },
     { start: "2026-12-15T00:00:00-05:00", end: "2026-12-22T23:59:59-05:00", label: "Winter Solstice sale", short: "Solstice price", why: "Dōngzhì is when Chinese families gather for dumplings and warm soup." },
     { start: "2027-01-30T00:00:00-05:00", end: "2027-02-10T23:59:59-05:00", label: "Lunar New Year sale", short: "New Year price", why: "welcoming the Year of the Goat with food for a long, healthy year." },
@@ -788,17 +791,17 @@ var CONFIG = {
   // "full" links charge the regular price, "sale" links the festival price.
   products: {
     kitchen: {
-      regular: 25, sale: 25,
+      regular: 29, sale: 25,
       stripe:  { sale: "https://buy.stripe.com/REPLACE_kitchen_sale",  full: "https://buy.stripe.com/REPLACE_kitchen_full" },
       gumroad: { sale: "https://meizhou.gumroad.com/l/chinese_home_kitchen", full: "https://meizhou.gumroad.com/l/chinese_home_kitchen" }
     },
     seasons: {
-      regular: 16, sale: 16,
+      regular: 19, sale: 16,
       stripe:  { sale: "https://buy.stripe.com/REPLACE_seasons_sale",  full: "https://buy.stripe.com/REPLACE_seasons_full" },
       gumroad: { sale: "https://meizhou.gumroad.com/l/eat_for_the_season", full: "https://meizhou.gumroad.com/l/eat_for_the_season" }
     },
     bundle: {
-      regular: 34, sale: 34,
+      regular: 39, sale: 34,
       stripe:  { sale: "https://buy.stripe.com/REPLACE_bundle_sale",   full: "https://buy.stripe.com/REPLACE_bundle_full" },
       gumroad: { sale: "https://meizhou.gumroad.com/l/complete_bundle", full: "https://meizhou.gumroad.com/l/complete_bundle" }
     }
@@ -864,10 +867,10 @@ var CONFIG = {
     var now = Date.now();
     PROMO = null;
     (CONFIG.promotions || []).some(function (p) {
-      if (now >= Date.parse(p.start) && now < Date.parse(p.end)) { PROMO = p; return true; }
+      if (now >= Date.parse(p.start) && (!p.end || now < Date.parse(p.end))) { PROMO = p; return true; }
       return false;
     });
-    END = PROMO ? Date.parse(PROMO.end) : 0;
+    END = PROMO ? (PROMO.end ? Date.parse(PROMO.end) : Infinity) : 0;
   }
   findPromo();
   var onSale = function () { return !!PROMO && Date.now() < END; };
@@ -888,6 +891,7 @@ var CONFIG = {
       $$("[data-promo-why]").forEach(function (el) { el.textContent = PROMO.why; });
     }
     root.classList.toggle("ended", !live);
+    root.classList.toggle("no-end", END === Infinity);
     $$(".ended-only").forEach(function (el) { el.hidden = live; });
     var term = currentTerm();
     $$("[data-term-label]").forEach(function (el) { el.textContent = term.zh + " " + term.en; });
